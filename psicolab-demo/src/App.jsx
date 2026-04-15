@@ -198,12 +198,8 @@ export default function App() {
 
   function handleReset() { setStep("form"); setResult(null); setError(""); setProgress(0); }
 
-  const Input = ({ label, k, placeholder, gridSpan }) => (
-    <div style={gridSpan ? { gridColumn: gridSpan } : {}}>
-      <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#475569", marginBottom: 4 }}>{label}</label>
-      <input value={form[k]} onChange={e => setForm({ ...form, [k]: e.target.value })} placeholder={placeholder} style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #d1d5db", fontSize: 13, fontFamily: font, boxSizing: "border-box" }} />
-    </div>
-  );
+  const inputStyle = { width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid #d1d5db", fontSize: 13, fontFamily: font, boxSizing: "border-box" };
+  const labelStyle = { display: "block", fontSize: 12, fontWeight: 600, color: "#475569", marginBottom: 4 };
 
   return (
     <div style={{ minHeight: "100vh", fontFamily: font, background: "#f1f5f9" }}>
@@ -230,24 +226,26 @@ export default function App() {
           <Card s={{ marginBottom: 20 }}>
             <Section>Datos del postulante</Section>
             <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 12, marginBottom: 12 }}>
-              <Input label="Nombre completo *" k="name" placeholder="Roxana Buscaglione" />
-              <Input label="RUT" k="rut" placeholder="13.645.412-9" />
-              <Input label="Edad" k="age" placeholder="46 años" />
+              <div><label style={labelStyle}>Nombre completo *</label><input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Roxana Buscaglione" style={inputStyle} /></div>
+              <div><label style={labelStyle}>RUT</label><input value={form.rut} onChange={e => setForm(f => ({ ...f, rut: e.target.value }))} placeholder="13.645.412-9" style={inputStyle} /></div>
+              <div><label style={labelStyle}>Edad</label><input value={form.age} onChange={e => setForm(f => ({ ...f, age: e.target.value }))} placeholder="46 años" style={inputStyle} /></div>
             </div>
             <div style={{ marginBottom: 12 }}>
-              <Input label="Formación / Título" k="education" placeholder="Médico Cirujano, U. San Sebastián, 2004" gridSpan="1 / -1" />
+              <label style={labelStyle}>Formación / Título</label><input value={form.education} onChange={e => setForm(f => ({ ...f, education: e.target.value }))} placeholder="Médico Cirujano, U. San Sebastián, 2004" style={inputStyle} />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-              <Input label="Último cargo" k="lastJob" placeholder="Directora Académica" />
-              <Input label="Empresa" k="lastCompany" placeholder="Universidad Mayor" />
-              <Input label="Fechas" k="lastDates" placeholder="Jul 2024 - Mar 2025" />
+              <div><label style={labelStyle}>Último cargo</label><input value={form.lastJob} onChange={e => setForm(f => ({ ...f, lastJob: e.target.value }))} placeholder="Directora Académica" style={inputStyle} /></div>
+              <div><label style={labelStyle}>Empresa</label><input value={form.lastCompany} onChange={e => setForm(f => ({ ...f, lastCompany: e.target.value }))} placeholder="Universidad Mayor" style={inputStyle} /></div>
+              <div><label style={labelStyle}>Fechas</label><input value={form.lastDates} onChange={e => setForm(f => ({ ...f, lastDates: e.target.value }))} placeholder="Jul 2024 - Mar 2025" style={inputStyle} /></div>
+            </div>
             </div>
           </Card>
 
           <Card s={{ marginBottom: 20 }}>
             <Section>Cargo y formato de informe</Section>
             <div style={{ marginBottom: 16 }}>
-              <Input label="Cargo al que postula *" k="position" placeholder="Médico Director" />
+              <label style={labelStyle}>Cargo al que postula *</label>
+              <input value={form.position} onChange={e => setForm(f => ({ ...f, position: e.target.value }))} placeholder="Médico Director" style={inputStyle} />
             </div>
             <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#475569", marginBottom: 8 }}>Formato de informe *</label>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
