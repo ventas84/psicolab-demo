@@ -238,7 +238,6 @@ export default function App() {
               <div><label style={labelStyle}>Empresa</label><input value={form.lastCompany} onChange={e => setForm(f => ({ ...f, lastCompany: e.target.value }))} placeholder="Universidad Mayor" style={inputStyle} /></div>
               <div><label style={labelStyle}>Fechas</label><input value={form.lastDates} onChange={e => setForm(f => ({ ...f, lastDates: e.target.value }))} placeholder="Jul 2024 - Mar 2025" style={inputStyle} /></div>
             </div>
-            </div>
           </Card>
 
           <Card s={{ marginBottom: 20 }}>
